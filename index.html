@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="NVAtlas is an interactive atlas of nominal-to-verbal shifts in 500 English–Chinese subtitle pairs.">
+  <meta name="theme-color" content="#14272b">
+  <title>NVAtlas · From nouns to verbs</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content" data-i18n="a11y.skip">Skip to content</a>
+
+  <header class="site-header">
+    <a class="brand" href="?view=home" data-view-link="home" aria-label="NVAtlas home">
+      <span class="brand-mark" aria-hidden="true">NV</span>
+      <span class="brand-wordmark">NVAtlas</span>
+    </a>
+
+    <nav class="site-nav" aria-label="Primary navigation" data-i18n-aria-label="nav.label">
+      <a href="?view=home" data-view-link="home" data-i18n="nav.home">Home</a>
+      <a href="?view=explore" data-view-link="explore" data-i18n="nav.explore">Explore</a>
+      <a href="?view=visualize" data-view-link="visualize" data-i18n="nav.visualize">Visualize</a>
+      <a href="?view=report" data-view-link="report" data-i18n="nav.report">Report</a>
+      <a href="?view=codebook" data-view-link="codebook" data-i18n="nav.codebook">Codebook</a>
+      <a href="?view=ai" data-view-link="ai" data-i18n="nav.ai">AI use</a>
+    </nav>
+
+    <div class="language-switch" role="group" aria-label="Language" data-i18n-aria-label="lang.label">
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="zh-Hant" aria-pressed="false">繁</button>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="filter-dock" id="filter-dock" hidden aria-label="Corpus filters">
+      <div class="filter-grid">
+        <label class="search-control">
+          <span class="field-label" data-i18n="filters.search">Search</span>
+          <span class="input-shell">
+            <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4.5 4.5"></path></svg>
+            <input id="global-search" type="search" autocomplete="off" data-i18n-placeholder="filters.searchPlaceholder">
+          </span>
+        </label>
+        <label class="select-control">
+          <span class="field-label" data-i18n="filters.category">Shift category</span>
+          <select id="category-filter"></select>
+        </label>
+        <label class="select-control">
+          <span class="field-label" data-i18n="filters.checked">Human checked</span>
+          <select id="checked-filter">
+            <option value="" data-i18n="filters.allChecks">All entries</option>
+            <option value="yes" data-i18n="filters.yes">Checked</option>
+            <option value="no" data-i18n="filters.no">Unchecked</option>
+          </select>
+        </label>
+        <label class="switch-control">
+          <input id="unique-filter" type="checkbox">
+          <span data-i18n="filters.unique">Hide repeated pairs</span>
+        </label>
+        <button class="button ghost compact" id="clear-filters" type="button" data-i18n="filters.clear">Clear filters</button>
+      </div>
+      <div class="filter-status-row">
+        <div class="filter-status">
+          <strong id="result-count" aria-live="polite"></strong>
+          <div id="active-filters" class="active-filters"></div>
+        </div>
+        <button class="button outline compact" id="export-csv" type="button" data-i18n="filters.export">Export filtered CSV</button>
+      </div>
+    </section>
+
+    <section class="view home-view" id="view-home" data-view="home">
+      <div class="home-hero">
+        <div class="hero-copy">
+          <p class="eyebrow" data-i18n="home.eyebrow">Digital humanities · corpus study</p>
+          <h1><span data-i18n="home.titleA">From nouns</span><br><em data-i18n="home.titleB">to verbs.</em></h1>
+          <p class="hero-deck" data-i18n="home.deck">An interactive atlas of nominal-to-verbal shifts in 500 English–Chinese subtitle pairs.</p>
+          <p class="hero-body" data-i18n="home.body">When an abstract English noun meets a compressed subtitle line, Chinese often lets a verb carry the action. NVAtlas makes those shifts searchable, filterable, and visible.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="?view=explore" data-view-link="explore" data-i18n="home.ctaExplore">Enter the atlas</a>
+            <a class="button text" href="?view=report" data-view-link="report" data-i18n="home.ctaReport">Read the learning report <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+
+        <figure class="hero-figure" aria-label="attention translated by four Chinese verbs">
+          <div class="figure-label"><span data-i18n="home.figureLabel">One nominal, four renderings</span><span class="figure-id">ID 4417 · 35417 · 36018 · 49637</span></div>
+          <div class="term-origin">attention</div>
+          <div class="flow-stems" aria-hidden="true">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <div class="verb-cluster">
+            <span>注意</span><span>重视</span><span>稍息</span><span>知道</span>
+          </div>
+          <figcaption><span data-i18n="home.figureCaption">The same English nominal fans out into direct, modulated, and context-specific Chinese verbs.</span></figcaption>
+        </figure>
+      </div>
+
+      <div class="stat-strip" aria-label="Corpus summary">
+        <div><strong>500</strong><span data-i18n="home.stat.pairs">sentence pairs</span></div>
+        <div><strong>195</strong><span data-i18n="home.stat.nominals">English nominals</span></div>
+        <div><strong>277</strong><span data-i18n="home.stat.verbs">Chinese verb forms</span></div>
+        <div><strong>5</strong><span data-i18n="home.stat.categories">shift categories</span></div>
+      </div>
+
+      <div class="home-grid">
+        <article class="question-card">
+          <p class="eyebrow" data-i18n="home.questionEyebrow">The research question</p>
+          <h2 data-i18n="home.question">When an English nominal becomes a Chinese verb, where does the shift become direct, modulated, specified, stative, or weak?</h2>
+          <p data-i18n="home.questionBody">Subtitles reward compression. The interesting unit is not the dictionary equivalent of a noun, but the verb a translator chose in a particular line.</p>
+        </article>
+        <article class="glance-card">
+          <p class="eyebrow" data-i18n="home.glanceEyebrow">At a glance</p>
+          <div class="insight-list">
+            <div><strong>66.8%</strong><span data-i18n="home.insightDirect">of entries use a direct lexical transposition.</span></div>
+            <div><strong>33.2%</strong><span data-i18n="home.insightOther">move beyond direct equivalence.</span></div>
+            <div><strong>attention × 45</strong><span data-i18n="home.insightAttention">is the strongest repeated nominal signal in the corpus.</span></div>
+          </div>
+        </article>
+      </div>
+
+      <section class="term-starter" aria-labelledby="term-starter-title">
+        <div>
+          <p class="eyebrow" data-i18n="home.termsEyebrow">Start with a signal</p>
+          <h2 id="term-starter-title" data-i18n="home.termsTitle">Follow a word into its translations.</h2>
+        </div>
+        <div class="term-chips" id="home-term-chips"></div>
+      </section>
+
+      <section class="provenance-note">
+        <span class="note-index">01</span>
+        <div>
+          <h3 data-i18n="home.provenanceTitle">Traceable by design</h3>
+          <p data-i18n="home.provenanceBody">Every entry keeps its OpenSubtitles sentence ID. The build matched all 500 English strings to OpenSubtitles v2024; 50 entries were source-checked with seed 2026. OpenSubtitles and OPUS are credited in the footer.</p>
+        </div>
+        <a href="?view=codebook" data-view-link="codebook" class="text-link" data-i18n="home.provenanceLink">Read the codebook →</a>
+      </section>
+    </section>
+
+    <section class="view explore-view" id="view-explore" data-view="explore" hidden>
+      <div class="page-intro split-intro">
+        <div>
+          <p class="eyebrow" data-i18n="explore.eyebrow">Browse the corpus</p>
+          <h1 data-i18n="explore.title">Read the shift line by line.</h1>
+        </div>
+        <p data-i18n="explore.deck">Search both languages, isolate a category, inspect source IDs, and export exactly the rows in view.</p>
+      </div>
+
+      <div class="explore-summary" id="explore-summary"></div>
+
+      <div class="table-card">
+        <div class="table-toolbar">
+          <div>
+            <p class="eyebrow" data-i18n="explore.tableEyebrow">Corpus browser</p>
+            <h2 data-i18n="explore.tableTitle">500 traceable sentence pairs</h2>
+          </div>
+          <div class="table-actions">
+            <span id="table-view-count" class="muted"></span>
+            <button class="button outline compact" type="button" id="table-export" data-i18n="explore.export">Export CSV</button>
+          </div>
+        </div>
+        <div class="table-scroll">
+          <table class="corpus-table" id="browse-table">
+            <thead></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="table-footer">
+          <span id="table-range" class="muted"></span>
+          <div class="pager">
+            <button type="button" class="pager-button" id="page-prev" aria-label="Previous page">←</button>
+            <span id="page-label"></span>
+            <button type="button" class="pager-button" id="page-next" aria-label="Next page">→</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="view visualize-view" id="view-visualize" data-view="visualize" hidden>
+      <div class="page-intro split-intro">
+        <div>
+          <p class="eyebrow" data-i18n="viz.eyebrow">Linked visual analysis</p>
+          <h1 data-i18n="viz.title">See the pattern, then follow it.</h1>
+        </div>
+        <p data-i18n="viz.deck">Every chart responds to the shared filters. Click a term or category to carry the selection into every other view.</p>
+      </div>
+
+      <div class="viz-grid">
+        <article class="viz-card viz-wide" id="viz-sankey-card">
+          <div class="viz-heading">
+            <div><span class="viz-number">01</span><h2 data-i18n="viz.sankey.title">Nominal → verb flow map</h2></div>
+            <p data-i18n="viz.sankey.caption">How do the most frequent English nominals fan out into Chinese verbs?</p>
+          </div>
+          <div class="viz-controls" aria-label="Sankey controls">
+            <label><span data-i18n="viz.sankey.top">Top nominals</span><select id="sankey-top"></select></label>
+            <label><span data-i18n="viz.sankey.verbs">Top verbs</span><select id="sankey-verbs"></select></label>
+            <label><span data-i18n="viz.sankey.min">Minimum link</span><select id="sankey-min"></select></label>
+          </div>
+          <div class="chart-frame sankey-frame" id="sankey-chart"></div>
+          <p class="viz-hint" data-i18n="viz.sankey.hint">Click a noun or verb to turn it into a corpus search.</p>
+        </article>
+
+        <article class="viz-card viz-half" id="viz-treemap-card">
+          <div class="viz-heading">
+            <div><span class="viz-number">02</span><h2 data-i18n="viz.treemap.title">Shift-category treemap</h2></div>
+            <p data-i18n="viz.treemap.caption">Which English nominal families dominate each kind of shift?</p>
+          </div>
+          <div class="viz-controls" aria-label="Treemap controls">
+            <label><span data-i18n="viz.treemap.terms">Terms per category</span><select id="treemap-terms"></select></label>
+            <label><span data-i18n="viz.treemap.metric">Size by</span><select id="treemap-metric"></select></label>
+          </div>
+          <div class="chart-frame treemap-frame" id="treemap-chart"></div>
+          <p class="viz-hint" data-i18n="viz.treemap.hint">Click a category band to filter; click a term to search.</p>
+        </article>
+
+        <article class="viz-card viz-half" id="viz-scatter-card">
+          <div class="viz-heading">
+            <div><span class="viz-number">03</span><h2 data-i18n="viz.scatter.title">Length plot</h2></div>
+            <p data-i18n="viz.scatter.caption">Do longer English sentences produce proportionally longer Chinese lines, and which shifts occupy the extremes?</p>
+          </div>
+          <div class="viz-controls" aria-label="Length plot controls">
+            <label class="inline-check"><input type="checkbox" id="scatter-log"><span data-i18n="viz.scatter.log">Log scale</span></label>
+            <span class="stat-inline" id="scatter-correlation"></span>
+          </div>
+          <div class="chart-frame scatter-frame" id="scatter-chart"></div>
+          <p class="viz-hint" data-i18n="viz.scatter.hint">Click a point to inspect the entry and follow its nominal.</p>
+        </article>
+
+        <article class="viz-card viz-wide" id="viz-kwic-card">
+          <div class="viz-heading">
+            <div><span class="viz-number">04</span><h2 data-i18n="viz.kwic.title">Bilingual KWIC</h2></div>
+            <p data-i18n="viz.kwic.caption">What local wording surrounds each nominal-to-verb shift?</p>
+          </div>
+          <div class="viz-controls" aria-label="KWIC controls">
+            <label><span data-i18n="viz.kwic.window">Context width</span><select id="kwic-window"></select></label>
+            <label><span data-i18n="viz.kwic.sort">Sort by</span><select id="kwic-sort"></select></label>
+          </div>
+          <div class="kwic-head" aria-hidden="true">
+            <span data-i18n="viz.kwic.english">English context</span>
+            <span data-i18n="viz.kwic.chinese">Chinese context</span>
+            <span data-i18n="viz.kwic.meta">Entry</span>
+          </div>
+          <div class="kwic-list" id="kwic-chart"></div>
+          <p class="viz-hint" data-i18n="viz.kwic.hint">The highlighted items are clickable. Context is clipped within the sentence pair.</p>
+        </article>
+      </div>
+
+      <article class="linked-table-card">
+        <div class="table-toolbar compact-toolbar">
+          <div><p class="eyebrow" data-i18n="viz.tableEyebrow">Linked evidence</p><h2 data-i18n="viz.tableTitle">Rows behind the current view</h2></div>
+          <a class="button text compact" href="?view=explore" data-view-link="explore" data-i18n="viz.openTable">Open full data browser →</a>
+        </div>
+        <div class="table-scroll">
+          <table class="corpus-table mini-table" id="mini-table"><thead></thead><tbody></tbody></table>
+        </div>
+      </article>
+    </section>
+
+    <section class="view longform-view" id="view-report" data-view="report" hidden>
+      <article class="longform" id="report-content"></article>
+    </section>
+
+    <section class="view longform-view" id="view-codebook" data-view="codebook" hidden>
+      <article class="longform" id="codebook-content"></article>
+    </section>
+
+    <section class="view longform-view" id="view-ai" data-view="ai" hidden>
+      <article class="longform" id="ai-content"></article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div class="footer-brand"><span class="brand-mark small">NV</span><span>NVAtlas</span></div>
+      <p data-i18n="footer.description">A bilingual corpus explorer built for the 2026R1 Translation Technology in the Age of AI final project.</p>
+      <p class="footer-credit" data-i18n-html="footer.credit">Data: OpenSubtitles v2024 en–zh_CN via OPUS. Short quotations for research and teaching. <a href="https://opus.nlpl.eu/OpenSubtitles/corpus/version/OpenSubtitles" target="_blank" rel="noreferrer">OPUS ↗</a> · <a href="https://www.opensubtitles.org/" target="_blank" rel="noreferrer">OpenSubtitles ↗</a></p>
+      <p class="footer-download"><a href="NVAtlas-corpus.csv" download data-i18n="footer.download">Download the cleaned corpus CSV (500 rows)</a></p>
+    </div>
+    <div class="footer-meta">
+      <span data-i18n="footer.built">Built as a static GitHub Pages site.</span>
+      <span>2026 · NVAtlas</span>
+    </div>
+  </footer>
+
+  <div class="drawer-backdrop" id="drawer-backdrop" hidden></div>
+  <aside class="entry-drawer" id="entry-drawer" role="dialog" aria-modal="true" aria-labelledby="drawer-title" hidden>
+    <button class="drawer-close" id="drawer-close" type="button" aria-label="Close entry">×</button>
+    <div id="drawer-content"></div>
+  </aside>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+  <div class="loading-state" id="loading-state"><span class="loading-dot"></span><span data-i18n="status.loading">Loading the corpus…</span></div>
+  <noscript><p class="noscript">This explorer requires JavaScript. The corpus is available as <code>NVAtlas-AI-Agent.csv</code> in the repository.</p></noscript>
+
+  <script src="content.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
